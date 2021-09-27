@@ -1,0 +1,15 @@
+{
+  "name": "hometask13",
+  "version": "1.0.0",
+  "description": "Home task 13",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "keywords": [
+    "epam",
+    "lab",
+    "home task"
+  ],
+  "author": "Stanislau Turasau",
+  "license": "ISC"
+}
