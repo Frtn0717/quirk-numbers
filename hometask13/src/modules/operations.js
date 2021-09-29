@@ -7,5 +7,6 @@ export const operations = {
   '+': sum,
   '-': sub,
   '×': mul,
+  '*': mul,
   '/': div,
 };
