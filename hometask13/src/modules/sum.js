@@ -1,8 +1,8 @@
-// export const sum = new Promise((res, rej) => {
-//   setTimeout(() => {
-//     res((a, b) => a + b);    
-//   }, 2000);
-// });
+// const sum = (a, b) => {
+//   return new Promise(resolve => {
+//       setTimeout(() => resolve(a + b), 1000);
+//   })
+// }
 
 export const sum = (a, b) => {
   // setTimeout(() => {

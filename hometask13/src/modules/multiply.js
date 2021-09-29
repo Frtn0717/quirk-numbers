@@ -1,8 +1,8 @@
-// export const mul = new Promise((res, rej) => {
-//   setTimeout(() => {
-//     res((a, b) => a * b);    
-//   }, 2000);
-// });
+// const mul = (a, b) => {
+//   return new Promise(resolve => {
+//       setTimeout(() => resolve(a * b), 1000);
+//   })
+// }
 
 export const mul = (a, b) => {
   // setTimeout(() => {

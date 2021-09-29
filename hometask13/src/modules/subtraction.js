@@ -1,8 +1,8 @@
-// export const sub = new Promise((res, rej) => {
-//   setTimeout(() => {
-//     res((a, b) => a - b);    
-//   }, 2000);
-// });
+// const sub = (a, b) => {
+//   return new Promise(resolve => {
+//       setTimeout(() => resolve(a - b), 1000);
+//   })
+// }
 
 
 export const sub = (a, b) => {

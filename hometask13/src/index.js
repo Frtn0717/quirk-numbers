@@ -5,57 +5,37 @@ const str2 = '1 2 3 4 + × +';
 const str3 = '1 2 3 4 5 2 + × + - /';
 const str4 = '1 2 3 4 6 2 + × * - /';
 
+const delay = () => new Promise((res, rej) => setTimeout(res, 2000));
 
 const calculate = (input, stack) => {
-  let inputArr = [];
-  
-  if (typeof(input) === 'string') {    
-    inputArr = input.split(' ').map(i => {
-      const processedElement = +i ? +i : i;
-      return processedElement;
-    });
-  };
+  if (typeof input === 'string') {
+    input = input.split(' ').map((el) => (isNaN(Number(el)) ? el : Number(el)));
+  }
 
-  console.log('start: ', inputArr);
+  console.log('\nstart: ', input);
 
-  for (let i = 0; i < inputArr.length; i++) {
-    console.log('inputArr.length = ', inputArr.length);
+  const currChar = input.shift();
+  console.log('input.length = ', input.length);
 
-    if (typeof(inputArr[i]) === 'number') {
-      if (!stack) {
-        stack = [];
-      };
-
-      stack.push(inputArr[i]);
-      inputArr.splice(0, 1);
-      console.log('stack in if number', stack);
-      console.log('inputArr in if number', inputArr);
-
+  if (typeof currChar === 'number') {
+    if (!stack) {
+      stack = [currChar];
     } else {
-      if (operations.hasOwnProperty(inputArr[i])) {
-        console.log(stack[0], stack[1])
-        const resultCurCalc = operations[inputArr[i]](stack[0], stack[1])
-        stack.splice(0,2);
-        stack.unshift(resultCurCalc);
-        console.log('stack after oper: ', stack);
-        inputArr.splice(0, 1);
-      };
-    };
-    
-    if (input.length > 0) {
-      console.log('recursive call');
-      return calculate(inputArr.join(' '), stack);
-    } else {
-      return stack[0];
-    };
+      stack.push(currChar);
+    }
+  } else {
+    const firstArg = stack.shift();
+    const secondArg = stack.shift();
+    const curResult = operations[currChar](firstArg, secondArg);
+    console.log(curResult);
+    stack.unshift(curResult);
+  }
 
-  };
-
-  return stack;
-
+  console.log('current stack: ', stack)
+  return input.length ? calculate(input, stack) : stack.shift();
 };
 
-// console.log(calculate(str));
+calculate(str);
 // console.log(calculate(str2));
 // console.log(calculate(str3));
-console.log(calculate(str4));
+// console.log(calculate(str4));
