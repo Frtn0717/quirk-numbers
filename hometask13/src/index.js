@@ -24,11 +24,11 @@ const calculate = async (input, stack) => {
         stack.push(currChar);
       };
     } else {
-      const firstArg = stack.shift();
-      const secondArg = stack.shift();
+      const firstArg = stack.pop();
+      const secondArg = stack.pop();
       const curResult = await operations[currChar](firstArg, secondArg);
       console.log('Current result: ', curResult);
-      stack.unshift(curResult);
+      stack.push(curResult);
     };
 
     console.log('Current stack: ', stack);
@@ -38,7 +38,7 @@ const calculate = async (input, stack) => {
   };
 };
 
-calculate(str).then(result => console.log('Final result: ', result));
+// calculate(str).then(result => console.log('Final result: ', result));
 // calculate(str2).then(result => console.log('Final result: ', result));
-// calculate(str3).then(result => console.log('Final result: ', result));
+calculate(str3).then(result => console.log('Final result: ', result));
 // calculate(str4).then(result => console.log('Final result: ', result));
